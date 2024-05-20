@@ -26,7 +26,6 @@ namespace TestTask.Services.Implementations
         public async Task<List<Order>> GetOrders()
         {
             return await _context.Orders
-                .Include(o => o.User)
                 .Where(o => o.User.Status == UserStatus.Active)
                 .OrderBy(o => o.CreatedAt)
                 .ToListAsync();

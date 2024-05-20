@@ -18,9 +18,8 @@ namespace TestTask.Services.Implementations
         public async Task<User> GetUser()
         {
             return await _context.Users
-                .Include(u => u.Orders.Where(o => o.CreatedAt.Year == 2003 && o.Status == OrderStatus.Delivered))
-                .OrderByDescending(u => u.Orders.Where(o => o.CreatedAt.Year == 2003 && o.Status == OrderStatus.Delivered).Sum(o => o.Price * o.Quantity))
-                .FirstOrDefaultAsync();
+        .OrderByDescending(u => u.Orders.Where(o => o.CreatedAt.Year == 2003 && o.Status == OrderStatus.Delivered).Sum(o => o.Price * o.Quantity))
+        .FirstOrDefaultAsync();
         }
 
         public async Task<List<User>> GetUsers()
